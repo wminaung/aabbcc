@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <h1>This is Home Page</h1>
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <div>
+      <button id="logout">logout</button>
+    </div>
+    <script type="module">
+      import Cookey from "./node_modules/cookey/index.js";
+      console.log(Cookey);
+      try {
+        console.log(Cookey.getCookie);
+        if (Cookey.hasCookieKey("winlogin")) {
+          if (Cookey.getCookieValue("winlogin") === "axbxcx") {
+          } else {
+            window.location.href = "/";
+          }
+        }
+      } catch (err) {
+        console.log(err);
+        window.location.href = "/";
+      }
+
+      const logoutTag = document.getElementById("logout");
+
+      logoutTag.addEventListener("click", () => {
+        Cookey.deleteCookie("winlogin");
+        window.location.href = "./";
+      });
+    </script>
+  </body>
+</html>
